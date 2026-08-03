@@ -1,0 +1,112 @@
+[
+  {
+    "order_id": "ORD101",
+    "customer_name": "Alice Smith",
+    "item": "Classic White Tee",
+    "status": "delivered",
+    "order_date": "2026-07-20",
+    "delivery_date": "2026-07-24",
+    "price": 25.00,
+    "is_sale_item": false,
+    "tracking_number": "TRK123456781"
+  },
+  {
+    "order_id": "ORD102",
+    "customer_name": "Bob Jones",
+    "item": "Denim Jacket",
+    "status": "delivered",
+    "order_date": "2026-07-25",
+    "delivery_date": "2026-07-29",
+    "price": 85.00,
+    "is_sale_item": false,
+    "tracking_number": "TRK123456782"
+  },
+  {
+    "order_id": "ORD103",
+    "customer_name": "Charlie Brown",
+    "item": "Summer Dress",
+    "status": "delivered",
+    "order_date": "2026-06-10",
+    "delivery_date": "2026-06-15",
+    "price": 45.00,
+    "is_sale_item": false,
+    "tracking_number": "TRK123456783"
+  },
+  {
+    "order_id": "ORD104",
+    "customer_name": "Diana Prince",
+    "item": "Running Shoes",
+    "status": "delivered",
+    "order_date": "2026-05-01",
+    "delivery_date": "2026-05-05",
+    "price": 120.00,
+    "is_sale_item": false,
+    "tracking_number": "TRK123456784"
+  },
+  {
+    "order_id": "ORD105",
+    "customer_name": "Eve Adams",
+    "item": "Clearance Sunglasses",
+    "status": "delivered",
+    "order_date": "2026-07-28",
+    "delivery_date": "2026-08-01",
+    "price": 15.00,
+    "is_sale_item": true,
+    "tracking_number": "TRK123456785"
+  },
+  {
+    "order_id": "ORD106",
+    "customer_name": "Frank White",
+    "item": "Wool Scarf",
+    "status": "cancelled",
+    "order_date": "2026-08-01",
+    "delivery_date": null,
+    "price": 30.00,
+    "is_sale_item": false,
+    "tracking_number": null
+  },
+  {
+    "order_id": "ORD107",
+    "customer_name": "Grace Hall",
+    "item": "Leather Belt",
+    "status": "processing",
+    "order_date": "2026-08-02",
+    "delivery_date": null,
+    "price": 40.00,
+    "is_sale_item": false,
+    "tracking_number": null
+  },
+  {
+    "order_id": "ORD108",
+    "customer_name": "Henry Ford",
+    "item": "Graphic Hoodie",
+    "status": "shipped",
+    "order_date": "2026-08-01",
+    "delivery_date": null,
+    "price": 60.00,
+    "is_sale_item": false,
+    "tracking_number": "TRK123456788"
+  },
+  {
+    "order_id": "ORD109",
+    "customer_name": "Ivy Lee",
+    "item": "Canvas Sneakers",
+    "status": "delivered",
+    "order_date": "2026-07-10",
+    "delivery_date": "2026-07-15",
+    "price": 55.00,
+    "is_sale_item": false,
+    "tracking_number": "TRK123456789"
+  },
+  {
+    "order_id": "ORD110",
+    "customer_name": "Jack Black",
+    "item": "Beanie",
+    "status": "delivered",
+    "order_date": "2026-07-05",
+    "delivery_date": "2026-07-08",
+    "price": 20.00,
+    "is_sale_item": false,
+    "tracking_number": "TRK123456790"
+  }
+]

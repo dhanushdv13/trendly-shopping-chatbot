@@ -27,8 +27,9 @@ load_dotenv()
 
 # Wrap our pure python tools in LangChain's @tool decorator
 @tool
-def get_order(order_id: str):
+def get_order(order_id: str = ""):
     """Retrieve order details for a given order ID (e.g., 'ORD101')."""
+    if not order_id: return "Error: order_id is required. If you don't know it, ask the user."
     return _get_order(order_id)
 
 @tool
@@ -37,24 +38,28 @@ def search_policy(query: str):
     return _search_policy(query)
 
 @tool
-def check_return_eligibility(order_id: str):
+def check_return_eligibility(order_id: str = ""):
     """Check if a given order is eligible for a return based on the store's return policy."""
+    if not order_id: return "Error: order_id is required. If you don't know it, ask the user."
     return _check_return_eligibility(order_id)
 
 @tool
-def create_return(order_id: str):
+def create_return(order_id: str = ""):
     """Initiate a return for a given order."""
+    if not order_id: return "Error: order_id is required. If you don't know it, ask the user."
     return _create_return(order_id)
 
 @tool
-def create_exchange(order_id: str, new_item: str):
+def create_exchange(order_id: str = "", new_item: str = ""):
     """Initiate an exchange for a given order to get a new item."""
+    if not order_id: return "Error: order_id is required. If you don't know it, ask the user."
+    if not new_item: return "Error: new_item is required. If you don't know it, ask the user."
     return _create_exchange(order_id, new_item)
 
 @tool
-def escalate_to_human(order_id: str, issue: str, order_status: str, actions_taken: str, reason: str):
+def escalate_to_human(order_id: str = "", issue: str = "", order_status: str = "", actions_taken: str = "", reason: str = ""):
     """Escalate the customer's issue to a human support agent."""
-    # Note: Using str for optional arguments in @tool since some LLMs handle Optional poorly
+    if not order_id: return "Error: order_id is required. If you don't know it, ask the user."
     return _escalate_to_human(order_id, issue, order_status, actions_taken, reason)
 
 tools = [
@@ -67,16 +72,22 @@ tools = [
 ]
 
 # Initialize LLM
-llm = ChatGroq(model="llama3-8b-8192", temperature=0)
+llm = ChatGroq(model="llama-3.1-8b-instant", temperature=0)
 llm_with_tools = llm.bind_tools(tools)
 
 # Define the graph nodes
 def call_model(state: AgentState):
     messages = state["messages"]
     
+    order_id = state.get("order_id")
+    escalated = state.get("escalated", False)
+    
     # If the first message is not our system prompt, we prepend it
     if not messages or not isinstance(messages[0], SystemMessage):
-        messages = [SystemMessage(content=SYSTEM_PROMPT_V1)] + messages
+        context_prompt = SYSTEM_PROMPT_V1
+        if order_id:
+            context_prompt += f"\n\nCurrent Context: The customer is currently talking about order_id '{order_id}'. Use this order_id if they refer to 'it', 'this order', or 'the above order'."
+        messages = [SystemMessage(content=context_prompt)] + messages
         
     response = llm_with_tools.invoke(messages)
     
@@ -86,11 +97,34 @@ def call_model(state: AgentState):
     
     if response.tool_calls:
         for t in response.tool_calls:
+            # If the LLM omitted order_id but we have one in state, patch the tool call
+            if "order_id" not in t["args"] or not t["args"]["order_id"]:
+                if order_id:
+                    t["args"]["order_id"] = order_id
+                    
             if "order_id" in t["args"] and t["args"]["order_id"]:
-                order_id = t["args"]["order_id"]
+                # Update state if it's the first time we see an order_id
+                if not order_id:
+                    order_id = t["args"]["order_id"]
+                    
             if t["name"] == "escalate_to_human":
                 escalated = True
-                
+    else:
+        # Post-generation guardrails
+        content = response.content
+        if content:
+            content_lower = content.lower()
+            if "discount" in content_lower or "% off" in content_lower:
+                response.content = "I apologize, but I am not authorized to offer discounts or store credit."
+            
+            import re
+            mentioned_ords = re.findall(r"ORD\d+", content)
+            if mentioned_ords and state.get("order_id"):
+                for ord_num in mentioned_ords:
+                    if ord_num != state.get("order_id"):
+                        response.content = "I apologize, but I cannot share details about other customers' orders."
+                        break
+                        
     return {"messages": [response], "order_id": order_id, "escalated": escalated}
 
 # Define the routing logic

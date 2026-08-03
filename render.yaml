@@ -1,0 +1,27 @@
+services:
+  # FastAPI Backend Service
+  - type: web
+    name: trendly-api
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: GROQ_API_KEY
+        sync: false
+
+  # Streamlit Frontend Service
+  - type: web
+    name: trendly-ui
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: streamlit run ui.py --server.port $PORT --server.address 0.0.0.0
+    envVars:
+      - key: API_URL
+        fromService:
+          type: web
+          name: trendly-api
+          envVarKey: RENDER_EXTERNAL_URL
+        # Note: Render provides the base URL without a trailing slash, so we append /chat in code if needed
+        # Wait, the code expects the full URL to the endpoint or we can update it in ui.py to handle it.
+        # It's better to set a custom string, but Render blueprint doesn't support concat in envVars easily.
+        # Let's fix ui.py to append /chat if the env var doesn't have it.

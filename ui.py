@@ -51,10 +51,10 @@ CUSTOM_CSS = """
     color: #FDF5E6 !important;
 }
 
-/* Chat Input Container - Light Color */
+/* Chat Input Container - Dark Color */
 [data-testid="stChatInput"] {
-    background-color: #FDF5E6 !important; /* Cream color */
-    border: 1px solid #e3dcc8 !important;
+    background-color: #071022 !important; /* Dark color */
+    border: 1px solid #1c3d7a !important;
     border-radius: 12px !important;
     padding: 0.5rem !important;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2) !important;
@@ -62,13 +62,13 @@ CUSTOM_CSS = """
 }
 
 [data-testid="stChatInput"]:focus-within {
-    border-color: #1c3d7a !important;
-    box-shadow: 0 0 10px rgba(28, 61, 122, 0.3) !important;
+    border-color: #4a7fdc !important;
+    box-shadow: 0 0 10px rgba(74, 127, 220, 0.3) !important;
 }
 
-/* Ensure text inside the light input box is dark and readable */
+/* Ensure text inside the dark input box is light and readable */
 .stChatInputContainer textarea {
-    color: #000000 !important; 
+    color: #FDF5E6 !important; 
 }
 
 .stChatInputContainer textarea::placeholder {

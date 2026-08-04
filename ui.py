@@ -13,23 +13,23 @@ st.set_page_config(page_title="Trendly Support", page_icon="✨", layout="wide")
 # Unique Dynamic CSS Injection
 CUSTOM_CSS = """
 <style>
-/* Full Dark Surreal Theme */
+/* Single Royal Color Theme */
 .stApp {
-    background-color: #000000 !important;
-    color: #e0e0e0 !important;
+    background-color: #0b1a38 !important; /* Little dark royal blue */
+    color: #ffffff !important; /* Light text on dark background */
 }
 
 /* Chat Messages */
 .stChatMessage {
     background: transparent !important;
     border: none !important;
-    padding: 2rem 0 !important;
+    padding: 1.5rem 0 !important;
     margin: 0 !important;
     box-shadow: none !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
 }
 
-/* Assistant message specific background if desired */
+/* Assistant message specific background */
 [data-testid="stChatMessage"]:nth-child(even) {
     background-color: transparent !important;
 }
@@ -39,58 +39,60 @@ CUSTOM_CSS = """
 
 /* Assistant Avatar */
 [data-testid="chatAvatarIcon-assistant"] {
-    background: #000000 !important;
-    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    background: #1c3d7a !important; /* Royal blue accent */
+    border: 1px solid #2e59a8 !important;
     color: #ffffff !important;
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.1) !important;
 }
 
 /* User Avatar */
 [data-testid="chatAvatarIcon-user"] {
-    background: #000000 !important;
-    border: 1px solid rgba(255, 255, 255, 0.1) !important;
-    color: #888888 !important;
+    background: #2e59a8 !important; /* Lighter royal accent */
+    border: 1px solid #4a7fdc !important;
+    color: #ffffff !important;
 }
 
-/* Chat Input Container */
+/* Chat Input Container - Light Color */
 [data-testid="stChatInput"] {
-    background-color: #050505 !important;
-    border: 1px solid rgba(255, 255, 255, 0.1) !important;
-    border-radius: 0 !important;
+    background-color: #f8f9fa !important; /* Light color */
+    border: 1px solid #dee2e6 !important;
+    border-radius: 12px !important;
     padding: 0.5rem !important;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.8) !important;
-    transition: all 0.5s ease !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2) !important;
+    transition: all 0.3s ease !important;
 }
 
 [data-testid="stChatInput"]:focus-within {
-    border-color: rgba(255, 255, 255, 0.5) !important;
-    box-shadow: 0 0 30px rgba(255, 255, 255, 0.05) !important;
+    border-color: #1c3d7a !important;
+    box-shadow: 0 0 10px rgba(28, 61, 122, 0.3) !important;
 }
 
+/* Ensure text inside the light input box is dark and readable */
 .stChatInputContainer textarea {
-    color: #ffffff !important;
+    color: #000000 !important; 
+}
+
+.stChatInputContainer textarea::placeholder {
+    color: #6c757d !important;
 }
 
 /* Header Text */
 h1 {
     color: #ffffff !important;
-    font-weight: 300 !important;
+    font-weight: 500 !important;
     text-align: center;
-    font-size: 2rem !important;
-    letter-spacing: 4px;
-    margin-bottom: 3rem !important;
-    text-transform: uppercase;
+    font-size: 2.2rem !important;
+    margin-bottom: 2rem !important;
     background: none !important;
     -webkit-text-fill-color: initial !important;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.2) !important;
+    text-shadow: none !important;
 }
 
 /* Alert Styling */
 .stAlert {
-    background-color: #000000 !important;
-    border: 1px solid rgba(255, 0, 0, 0.3) !important;
-    color: #ff4444 !important;
-    border-radius: 0 !important;
+    background-color: #1c3d7a !important;
+    border: 1px solid #ff4444 !important;
+    color: #ffffff !important;
+    border-radius: 8px !important;
 }
 
 /* Hide Streamlit Branding */

@@ -107,6 +107,11 @@ footer {visibility: hidden;}
 """
 
 st.markdown(CUSTOM_CSS, unsafe_allow_html=True)
+
+# Top Left Logo Injection
+st.markdown("<div style='position: fixed; top: 15px; left: 20px; z-index: 9999; color: #ececec; font-size: 1.1rem; font-weight: 600; font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif; display: flex; align-items: center; gap: 5px; cursor: pointer;'>Trendly <span style='font-size: 0.8rem; color: #8e8ea0; margin-top: 2px;'>⌄</span></div>", unsafe_allow_html=True)
+
+# Centered Greeting
 st.markdown("<h1 style='text-align: center; font-weight: normal; margin-top: 10vh;'>Ready when you are.</h1>", unsafe_allow_html=True)
 
 # Initialize session state for messages and session_id

@@ -13,83 +13,75 @@ st.set_page_config(page_title="Trendly Support", page_icon="✨", layout="wide")
 # Unique Dynamic CSS Injection
 CUSTOM_CSS = """
 <style>
-/* Dynamic Animated Gradient Background */
-@keyframes gradientBG {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-
+/* ChatGPT Minimalist Dark Theme */
 .stApp {
-    background: linear-gradient(-45deg, #0a0510, #1a0b2e, #0d122a, #1f0b18);
-    background-size: 400% 400%;
-    animation: gradientBG 15s ease infinite;
-    color: #ffffff;
+    background-color: #212121;
+    color: #ececec;
 }
 
-/* Glassmorphism Chat Messages */
+/* Chat Messages - Flat and Minimal */
 .stChatMessage {
-    background: rgba(255, 255, 255, 0.03) !important;
-    backdrop-filter: blur(12px) !important;
-    -webkit-backdrop-filter: blur(12px) !important;
-    border: 1px solid rgba(255, 255, 255, 0.07) !important;
-    border-radius: 20px !important;
-    padding: 1.5rem !important;
-    margin-bottom: 1.5rem !important;
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4) !important;
-    transition: all 0.3s ease !important;
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    padding: 1.5rem 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
 }
 
-.stChatMessage:hover {
-    transform: translateY(-2px);
-    border-color: rgba(255, 75, 145, 0.4) !important;
-    box-shadow: 0 12px 40px 0 rgba(255, 75, 145, 0.15) !important;
+/* Assistant message specific background if desired */
+[data-testid="stChatMessage"]:nth-child(even) {
+    background-color: #212121 !important;
+}
+[data-testid="stChatMessage"]:nth-child(odd) {
+    background-color: #212121 !important;
 }
 
-/* Chat Avatars */
-[data-testid="chatAvatarIcon-user"] {
-    background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%) !important;
-    color: white !important;
-}
-
+/* Assistant Avatar */
 [data-testid="chatAvatarIcon-assistant"] {
-    background: linear-gradient(135deg, #ff0844 0%, #ffb199 100%) !important;
+    background-color: #10a37f !important;
     color: white !important;
 }
 
-/* Text Input Container */
+/* User Avatar */
+[data-testid="chatAvatarIcon-user"] {
+    background-color: #5436da !important;
+    color: white !important;
+}
+
+/* Chat Input Container */
 [data-testid="stChatInput"] {
-    background: rgba(10, 5, 20, 0.6) !important;
-    backdrop-filter: blur(20px) !important;
-    border: 1px solid rgba(255, 255, 255, 0.15) !important;
-    border-radius: 30px !important;
-    box-shadow: 0 0 20px rgba(0,242,254,0.1) !important;
-    transition: border-color 0.3s ease !important;
+    background-color: #2f2f2f !important;
+    border: 1px solid #424242 !important;
+    border-radius: 12px !important;
+    padding: 0.2rem !important;
+    box-shadow: none !important;
+    transition: none !important;
 }
 
 [data-testid="stChatInput"]:focus-within {
-    border-color: #00f2fe !important;
-    box-shadow: 0 0 30px rgba(0,242,254,0.3) !important;
+    border-color: #565656 !important;
+    box-shadow: none !important;
 }
 
 /* Header Text */
 h1 {
-    background: -webkit-linear-gradient(45deg, #ff0844, #ffb199, #00f2fe);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-shadow: 0px 0px 30px rgba(255, 8, 68, 0.3);
-    font-weight: 900 !important;
+    color: #ececec !important;
+    font-weight: 600 !important;
     text-align: center;
-    letter-spacing: -1px;
+    font-size: 1.8rem !important;
     margin-bottom: 2rem !important;
+    background: none !important;
+    -webkit-text-fill-color: initial !important;
+    text-shadow: none !important;
 }
 
 /* Alert Styling */
 .stAlert {
-    background: rgba(255, 171, 0, 0.1) !important;
-    border-left: 4px solid #ffab00 !important;
-    color: #ffab00 !important;
-    backdrop-filter: blur(10px);
+    background-color: #2f2f2f !important;
+    border: 1px solid #424242 !important;
+    color: #ececec !important;
+    border-radius: 8px !important;
 }
 
 /* Hide Streamlit Branding */

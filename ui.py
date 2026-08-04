@@ -16,7 +16,7 @@ CUSTOM_CSS = """
 /* Single Royal Color Theme */
 .stApp {
     background-color: #0b1a38 !important; /* Little dark royal blue */
-    color: #ffffff !important; /* Light text on dark background */
+    color: #FDF5E6 !important; /* Cream text on dark background */
 }
 
 /* Chat Messages */
@@ -41,20 +41,20 @@ CUSTOM_CSS = """
 [data-testid="chatAvatarIcon-assistant"] {
     background: #1c3d7a !important; /* Royal blue accent */
     border: 1px solid #2e59a8 !important;
-    color: #ffffff !important;
+    color: #FDF5E6 !important;
 }
 
 /* User Avatar */
 [data-testid="chatAvatarIcon-user"] {
     background: #2e59a8 !important; /* Lighter royal accent */
     border: 1px solid #4a7fdc !important;
-    color: #ffffff !important;
+    color: #FDF5E6 !important;
 }
 
 /* Chat Input Container - Light Color */
 [data-testid="stChatInput"] {
-    background-color: #f8f9fa !important; /* Light color */
-    border: 1px solid #dee2e6 !important;
+    background-color: #FDF5E6 !important; /* Cream color */
+    border: 1px solid #e3dcc8 !important;
     border-radius: 12px !important;
     padding: 0.5rem !important;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2) !important;
@@ -77,7 +77,7 @@ CUSTOM_CSS = """
 
 /* Header Text */
 h1 {
-    color: #ffffff !important;
+    color: #FDF5E6 !important;
     font-weight: 500 !important;
     text-align: center;
     font-size: 2.2rem !important;
@@ -91,7 +91,7 @@ h1 {
 .stAlert {
     background-color: #1c3d7a !important;
     border: 1px solid #ff4444 !important;
-    color: #ffffff !important;
+    color: #FDF5E6 !important;
     border-radius: 8px !important;
 }
 

@@ -26,7 +26,7 @@ CUSTOM_CSS = """
     padding: 1.5rem 0 !important;
     margin: 0 !important;
     box-shadow: none !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-bottom: 1px solid #050d1c !important; /* Very dark border */
 }
 
 /* Assistant message specific background */
@@ -39,31 +39,31 @@ CUSTOM_CSS = """
 
 /* Assistant Avatar */
 [data-testid="chatAvatarIcon-assistant"] {
-    background: #1c3d7a !important; /* Royal blue accent */
-    border: 1px solid #2e59a8 !important;
+    background: #071022 !important; /* Very dark royal */
+    border: 1px solid #050d1c !important; /* Dark border */
     color: #FDF5E6 !important;
 }
 
 /* User Avatar */
 [data-testid="chatAvatarIcon-user"] {
-    background: #2e59a8 !important; /* Lighter royal accent */
-    border: 1px solid #4a7fdc !important;
+    background: #122a59 !important; /* Dark royal */
+    border: 1px solid #0b1a38 !important; /* Dark border */
     color: #FDF5E6 !important;
 }
 
 /* Chat Input Container - Dark Color */
 [data-testid="stChatInput"] {
-    background-color: #071022 !important; /* Dark color */
-    border: 1px solid #1c3d7a !important;
+    background-color: #050d1c !important; /* Dark color */
+    border: 1px solid #0b1a38 !important; /* Dark border */
     border-radius: 12px !important;
     padding: 0.5rem !important;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2) !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5) !important;
     transition: all 0.3s ease !important;
 }
 
 [data-testid="stChatInput"]:focus-within {
-    border-color: #4a7fdc !important;
-    box-shadow: 0 0 10px rgba(74, 127, 220, 0.3) !important;
+    border-color: #122a59 !important; /* Dark royal border */
+    box-shadow: 0 0 10px rgba(18, 42, 89, 0.5) !important;
 }
 
 /* Ensure text inside the dark input box is light and readable */
@@ -72,7 +72,7 @@ CUSTOM_CSS = """
 }
 
 .stChatInputContainer textarea::placeholder {
-    color: #6c757d !important;
+    color: #4a5c82 !important; /* Muted darkish text */
 }
 
 /* Header Text */
@@ -89,8 +89,8 @@ h1 {
 
 /* Alert Styling */
 .stAlert {
-    background-color: #1c3d7a !important;
-    border: 1px solid #ff4444 !important;
+    background-color: #2b0c10 !important; /* Very dark red */
+    border: 1px solid #52161d !important; /* Dark red border */
     color: #FDF5E6 !important;
     border-radius: 8px !important;
 }

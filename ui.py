@@ -31,6 +31,11 @@ header {
     margin: 0 !important;
     box-shadow: none !important;
     border-bottom: none !important;
+    color: #ececec !important;
+}
+
+.stChatMessage p, .stChatMessage div, .stChatMessage span {
+    color: #ececec !important;
 }
 
 /* Assistant message specific background */

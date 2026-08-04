@@ -13,10 +13,14 @@ st.set_page_config(page_title="Trendly Support", page_icon="✨", layout="wide")
 # Unique Dynamic CSS Injection
 CUSTOM_CSS = """
 <style>
-/* Single Royal Color Theme */
+/* Exact ChatGPT Clone Theme */
 .stApp {
-    background-color: #0b1a38 !important; /* Little dark royal blue */
-    color: #FDF5E6 !important; /* Cream text on dark background */
+    background-color: #000000 !important;
+    color: #ececec !important;
+}
+
+header {
+    visibility: hidden;
 }
 
 /* Chat Messages */
@@ -26,7 +30,7 @@ CUSTOM_CSS = """
     padding: 1.5rem 0 !important;
     margin: 0 !important;
     box-shadow: none !important;
-    border-bottom: 1px solid #050d1c !important; /* Very dark border */
+    border-bottom: none !important;
 }
 
 /* Assistant message specific background */
@@ -39,48 +43,49 @@ CUSTOM_CSS = """
 
 /* Assistant Avatar */
 [data-testid="chatAvatarIcon-assistant"] {
-    background: #071022 !important; /* Very dark royal */
-    border: 1px solid #050d1c !important; /* Dark border */
-    color: #FDF5E6 !important;
+    background: transparent !important; 
+    border: 1px solid #444 !important; 
+    color: #ececec !important;
 }
 
 /* User Avatar */
 [data-testid="chatAvatarIcon-user"] {
-    background: #122a59 !important; /* Dark royal */
-    border: 1px solid #0b1a38 !important; /* Dark border */
-    color: #FDF5E6 !important;
+    background: #333333 !important; 
+    border: none !important; 
+    color: #ececec !important;
 }
 
-/* Chat Input Container - Dark Color */
+/* Chat Input Container */
 [data-testid="stChatInput"] {
-    background-color: #050d1c !important; /* Dark color */
-    border: 1px solid #0b1a38 !important; /* Dark border */
-    border-radius: 12px !important;
-    padding: 0.5rem !important;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5) !important;
-    transition: all 0.3s ease !important;
+    background-color: #2f2f2f !important;
+    border: none !important;
+    border-radius: 30px !important;
+    padding: 0.5rem 1rem !important;
+    box-shadow: none !important;
+    transition: none !important;
 }
 
 [data-testid="stChatInput"]:focus-within {
-    border-color: #122a59 !important; /* Dark royal border */
-    box-shadow: 0 0 10px rgba(18, 42, 89, 0.5) !important;
+    border: none !important;
+    box-shadow: none !important;
 }
 
-/* Ensure text inside the dark input box is light and readable */
+/* Ensure text inside the input box is readable */
 .stChatInputContainer textarea {
-    color: #FDF5E6 !important; 
+    color: #ececec !important; 
+    font-size: 1rem !important;
 }
 
 .stChatInputContainer textarea::placeholder {
-    color: #4a5c82 !important; /* Muted darkish text */
+    color: #8e8ea0 !important; 
 }
 
 /* Header Text */
 h1 {
-    color: #FDF5E6 !important;
-    font-weight: 500 !important;
+    color: #ececec !important;
+    font-weight: 400 !important;
     text-align: center;
-    font-size: 2.2rem !important;
+    font-size: 2rem !important;
     margin-bottom: 2rem !important;
     background: none !important;
     -webkit-text-fill-color: initial !important;
@@ -89,9 +94,9 @@ h1 {
 
 /* Alert Styling */
 .stAlert {
-    background-color: #2b0c10 !important; /* Very dark red */
-    border: 1px solid #52161d !important; /* Dark red border */
-    color: #FDF5E6 !important;
+    background-color: #2f2f2f !important; 
+    border: none !important; 
+    color: #ececec !important;
     border-radius: 8px !important;
 }
 
@@ -102,7 +107,7 @@ footer {visibility: hidden;}
 """
 
 st.markdown(CUSTOM_CSS, unsafe_allow_html=True)
-st.title("Trendly AI ✨")
+st.markdown("<h1 style='text-align: center; font-weight: normal; margin-top: 10vh;'>Ready when you are.</h1>", unsafe_allow_html=True)
 
 # Initialize session state for messages and session_id
 if "session_id" not in st.session_state:
@@ -119,7 +124,7 @@ for message in st.session_state.messages:
         st.markdown(message["content"])
 
 # Handle user input
-if prompt := st.chat_input("Ask me about orders, returns, or policies..."):
+if prompt := st.chat_input("Ask anything"):
     # Display user message
     with st.chat_message("user"):
         st.markdown(prompt)

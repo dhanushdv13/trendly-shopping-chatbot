@@ -114,7 +114,7 @@ footer {visibility: hidden;}
 st.markdown(CUSTOM_CSS, unsafe_allow_html=True)
 
 # Top Left Logo Injection
-st.markdown("<div style='position: fixed; top: 15px; left: 20px; z-index: 9999; color: #ececec; font-size: 1.1rem; font-weight: 600; font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif; display: flex; align-items: center; gap: 5px; cursor: pointer;'>Trendly <span style='font-size: 0.8rem; color: #8e8ea0; margin-top: 2px;'>⌄</span></div>", unsafe_allow_html=True)
+st.markdown("<div style='position: fixed; top: 15px; left: 20px; z-index: 9999; color: #ececec; font-size: 1.35rem; font-weight: 600; font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif; display: flex; align-items: center; gap: 5px; cursor: pointer;'>Trendly <span style='font-size: 0.95rem; color: #8e8ea0; margin-top: 2px;'>⌄</span></div>", unsafe_allow_html=True)
 
 # Initialize session state for messages and session_id
 if "session_id" not in st.session_state:
@@ -155,7 +155,7 @@ if is_chat_empty:
     </style>
     """
     st.markdown(CENTERED_CSS, unsafe_allow_html=True)
-    st.markdown("<h1 class='centered-title' style='font-weight: 400;'>Ready when you are.</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 class='centered-title' style='font-weight: 400;'>In your own time.</h1>", unsafe_allow_html=True)
 
 # Display chat messages
 for message in st.session_state.messages:

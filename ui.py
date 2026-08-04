@@ -116,25 +116,54 @@ st.markdown(CUSTOM_CSS, unsafe_allow_html=True)
 # Top Left Logo Injection
 st.markdown("<div style='position: fixed; top: 15px; left: 20px; z-index: 9999; color: #ececec; font-size: 1.1rem; font-weight: 600; font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif; display: flex; align-items: center; gap: 5px; cursor: pointer;'>Trendly <span style='font-size: 0.8rem; color: #8e8ea0; margin-top: 2px;'>⌄</span></div>", unsafe_allow_html=True)
 
-# Centered Greeting
-st.markdown("<h1 style='text-align: center; font-weight: normal; margin-top: 10vh;'>Ready when you are.</h1>", unsafe_allow_html=True)
-
 # Initialize session state for messages and session_id
 if "session_id" not in st.session_state:
     st.session_state.session_id = str(uuid.uuid4())
 
 if "messages" not in st.session_state:
-    st.session_state.messages = [
-        {"role": "assistant", "content": "Hi! I'm the Trendly Support Agent. How can I help you today?"}
-    ]
+    # Start with a perfectly empty chat to match ChatGPT
+    st.session_state.messages = []
+
+# Dynamic logic for ChatGPT-like centered input on empty state
+has_new_prompt = bool(st.session_state.get("chat_input_val"))
+is_chat_empty = len(st.session_state.messages) == 0 and not has_new_prompt
+
+if is_chat_empty:
+    CENTERED_CSS = """
+    <style>
+    /* Center the chat input when there are no messages */
+    [data-testid="stChatInput"] {
+        position: fixed !important;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        width: 100% !important;
+        max-width: 800px !important;
+        bottom: auto !important;
+        z-index: 999 !important;
+    }
+    
+    /* Centered Header positioned slightly above the input */
+    h1.centered-title {
+        position: fixed;
+        top: 35%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        margin: 0 !important;
+    }
+    </style>
+    """
+    st.markdown(CENTERED_CSS, unsafe_allow_html=True)
+    st.markdown("<h1 class='centered-title' style='font-weight: 400;'>Ready when you are.</h1>", unsafe_allow_html=True)
 
 # Display chat messages
 for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
 
-# Handle user input
-if prompt := st.chat_input("Ask anything"):
+# Handle user input with a key so we can check it early in the execution flow
+if prompt := st.chat_input("Ask anything", key="chat_input_val"):
     # Display user message
     with st.chat_message("user"):
         st.markdown(prompt)

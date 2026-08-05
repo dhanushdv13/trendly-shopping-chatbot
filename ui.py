@@ -188,6 +188,11 @@ if prompt := st.chat_input("Ask anything", key="chat_input_val"):
                 
                 if data.get("escalated"):
                     st.warning("⚠️ This conversation has been escalated to a human agent.")
+                    st.info("📝 **What happens next:**\n\n"
+                            "1. A dedicated support representative will review this chat transcript.\n"
+                            "2. We will investigate the details of your request.\n"
+                            "3. You will receive an update shortly.\n\n"
+                            "📞 For immediate assistance, please call our 24/7 customer care line at **1-800-555-0199**.")
                     
             except requests.exceptions.RequestException as e:
                 st.error(f"Error connecting to the support server: {e}")

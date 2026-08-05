@@ -4,7 +4,7 @@ import uuid
 import os
 
 # Configuration
-API_URL = os.environ.get("API_URL", "http://127.0.0.1:8000/chat")
+API_URL = os.environ.get("API_URL", "https://trendly-shopping-chatbot.onrender.com/chat")
 if not API_URL.endswith("/chat"):
     API_URL = f"{API_URL.rstrip('/')}/chat"
 
